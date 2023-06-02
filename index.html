@@ -5,16 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Generator</title> 
-    <link rel="stylesheet" href="style.css">
     <script src="index.js"></script>
 </head>
 <body>
+
+
 <div class="fluid-container">
-         <div class="">
-            <h1>QR Code Generator</h1>
+         <h1><div class="center">
+         <div id="typing-effect">
+         <span id="text"></span><span id="cursor"></span>
+         </div></h1>
             <br />
             <br />
-            <img id="img" src="">
+            <img id="img" class="QRimg" src="">
+            <br />
+            <br />
         </div>
         <form class="center">   
          <textarea id="inputext" placeholder="paste here..."></textarea>
@@ -26,6 +31,7 @@
             <option value="450">450</option>
             <option value="550">550</option>
          </select>
+         <br/>
          <button type="submit" id="generateQR" >Generate</button>
         </form>
 </div>

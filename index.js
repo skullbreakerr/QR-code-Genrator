@@ -1,3 +1,4 @@
+import './style.css';
 const button = document.getElementById("generateQR");
 
 
@@ -25,3 +26,35 @@ function generateQR(event){
 }
 
 button.addEventListener('click',generateQR);
+
+const textElement = document.getElementById('text');
+const words = ['QR Code Generator'];
+
+let wordIndex = 0;
+let letterIndex = 0;
+
+function typeText() {
+  if (letterIndex < words[wordIndex].length) {
+    textElement.textContent += words[wordIndex].charAt(letterIndex);
+    letterIndex++;
+    setTimeout(typeText, Math.floor(Math.random() * 200) + 100); // Adjust typing speed here
+  } else {
+    setTimeout(eraseText, 1000); // Adjust the delay before erasing here
+  }
+}
+
+function eraseText() {
+  if (letterIndex >= 0) {
+    textElement.textContent = words[wordIndex].substring(0, letterIndex);
+    letterIndex--;
+    setTimeout(eraseText, 50); // Adjust erasing speed here
+  } else {
+    wordIndex++;
+    if (wordIndex >= words.length) {
+      wordIndex = 0;
+    }
+    setTimeout(typeText, 500); // Adjust the delay before typing the next word here
+  }
+}
+
+typeText();
