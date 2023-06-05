@@ -28,14 +28,13 @@ button:hover{
   border-color: rgba(241, 74, 74, 0.904);
   transition: 1s;
 }
-
-.QRimg{
+div img .QRimg{
   display: flex;
-  margin: 0;
-  justify-content: center;
+  padding: auto;
   align-items: center;
-  margin-left: 40%;
+  justify-content: space-between;
 } 
+
 #typing-effect {
   display: inline-block;
   overflow: hidden;
@@ -61,6 +60,15 @@ button:hover{
     border-color: transparent;
   }
   50% {
-    border-color: #000;
+    border-color:rgba(241, 74, 74, 0.904);
   }
+}
+
+footer h5{
+  text-align: center;
+  background-color:transparent;
+  letter-spacing: 9px;
+  color: rgb(0, 128, 0);
+  padding-bottom: 0px;
+  margin-top: 40vh;
 }
