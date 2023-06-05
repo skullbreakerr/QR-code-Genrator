@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Generator</title> 
     <script src="index.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/quagga"></script>    
 </head>
 <body>
-
-
-<div class="fluid-container">
+<div id="header">    
+    <div class="center">
+        <h1> <div id="typing-effect">QR code
+        <span id="text"></span><span id="cursor"></span>
+        </div></h1>
+    </div>    
+</div>
+<div id="qr-generator" >
         <div class="center">
-         <h1><div id="typing-effect">
-         <span id="text"></span><span id="cursor"></span>
-         </div></h1>
-            <br />
-            <br />
+           <br />
             <img id="img" class="QRimg" src="">
             <br />
             <br />
@@ -34,10 +35,19 @@
          </select>
          <br/>
          <button type="submit" id="generateQR" >Generate</button>
-         <button href="QRscanner.html">Scan QR code</button>
+         <button id="scanQR">Scan QR </button>
         </form>
         
-</div> 
-   
+</div>
+
+<div id="qr-scanner" class="hidden"> 
+  <div class="center">
+        <div id="scanner-container" >
+        <div id="camera"></div>
+        <label>Scanned Content </label>
+        <input type="text" id="result" readonly>
+        </div>
+  </div>   
+</div>   
 </body>
 </html>

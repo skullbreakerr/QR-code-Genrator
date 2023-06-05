@@ -72,3 +72,8 @@ footer h5{
   padding-bottom: 0px;
   margin-top: 40vh;
 }
+
+
+.hidden{
+  display: none;
+}

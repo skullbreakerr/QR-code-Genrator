@@ -1,5 +1,6 @@
 import './style.css';
 const button = document.getElementById('generateQR');
+const scanqrcode = document.getElementById('scanQR');
 
 function generateQR(event) {
   event.preventDefault();
@@ -17,27 +18,25 @@ function generateQR(event) {
       '&chl=QRcode+Generator++Develop+by:+Dharmik+Patel';
   } else {
     qr.src = chartAPI + '=' + imgsize + 'x' + imgsize + '&chl=' + inputext;
-  }
-  //   if(imgsize=='150'){
-  //      qr.src = chartAPI+"150x150&chl="+inputext;
-  //   }else if(imgsize=='250'){
-  //       qr.src = chartAPI+"250x250&chl="+inputext;
-  //   }else if(imgsize=='350'){
-  //      qr.src = chartAPI+"350x350&chl="+inputext;
-  //   }else if(imgsize=='450'){
-  //      qr.src = chartAPI+"450x450&chl="+inputext;
-  //   }else if(imgsize=='550'){
-  //      qr.src = chartAPI+"550x550&chl="+inputext;
-  //   }else{
-  //      qr.src = chartAPI+"250x250&chl=QRcode+Generator++Develop+by:+Dharmik+Patel";
-  //   }
+  } 
 }
 
+const scanQR= (event)=>{
+   event.preventDefault();
+   var currentss = document.getElementById('qr-generator');
+   var newss = document.getElementById('qr-scanner');
+
+   currentss.classList.add("hidden");
+   newss.classList.remove("hidden");
+} 
+
+scanqrcode.addEventListener('click',scanQR);
 button.addEventListener('click', generateQR);
+
 
 // Head Text Effect//
 const textElement = document.getElementById('text');
-const words = ['QR Code Generator'];
+const words = ['Generator','Scanner'];
 
 let wordIndex = 0;
 let letterIndex = 0;
@@ -68,22 +67,23 @@ function eraseText() {
 
 typeText();
 
-// Accessing Camera for Scanning QR code 
+// QR Scanner
 const config = {
   inputStream: {
     name: "Live",
     type: "LiveStream",
     target: "#camera",
     constraints: {
-      facingMode: "environment", // Using the back camera
+      facingMode: "environment", // Use the back camera
     },
   },
   decoder: {
-    readers: ["qr_code_reader"], // Specify the desired barcode readers
+    readers:["code_128_reader", "ean_reader", "upc_reader", "qr_code_reader"], // Specify the desired barcode readers
   },
 };
 
-Quagga.init(config, err => {
+// Initialize Quagga with the configuration
+Quagga.init(config, function (err) {
   if (err) {
     console.error(err);
     return;
